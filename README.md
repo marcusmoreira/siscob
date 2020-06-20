@@ -7,7 +7,7 @@ Deverá desenvolver um software de acordo ao seu tema utilizando a linguagem Jav
 
 Segundo Sommerville, software corresponde ao programa desenvolvido, dados de configuração e toda a sua documentação. 
 
-O Projeto será Orientado pelo professor Andre Guimarães Portugal.
+O Projeto será Orientado pelo professor Andre Portugal.
 
 O software deve ser desenvolvido utilizando os seguintes frameworks e/ou tecnologias :
 	JSF
