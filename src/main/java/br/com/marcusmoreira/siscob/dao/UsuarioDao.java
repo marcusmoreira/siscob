@@ -10,6 +10,10 @@ import br.com.marcusmoreira.siscob.util.HibernateUtil;
 
 public class UsuarioDao {
 
+     /**
+     * Grava usuario
+     * @param usuario
+     */    
     public void saveUser(Usuario usuario) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
@@ -27,6 +31,10 @@ public class UsuarioDao {
         }
     }
 
+    /**
+     * Atualiza usuario
+     * @param usuario
+     */
     public void updateUser(Usuario usuario) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
@@ -44,6 +52,10 @@ public class UsuarioDao {
         }
     }
 
+    /**
+     * Remover usuario
+     * @param login
+     */
     public void deleteUser(String login) {
 
         Transaction transaction = null;
@@ -66,6 +78,11 @@ public class UsuarioDao {
         }
     }
 
+     /**
+     * Pega usuario por login
+     * @param login
+     * @return
+     */    
     public Usuario getUser(String login) {
 
         Transaction transaction = null;
@@ -86,6 +103,10 @@ public class UsuarioDao {
         return usuario;
     }
 
+    /**
+     * Todos usuarios
+     * @return
+     */
     @SuppressWarnings("unchecked")
     public List < Usuario > getAllUser() {
 
@@ -95,7 +116,7 @@ public class UsuarioDao {
 
             transaction = session.beginTransaction();
 
-            listOfUser = session.createQuery("from USUARIO").getResultList();
+            listOfUser = session.createQuery("from usuario").getResultList();
 
             transaction.commit();
         } catch (Exception e) {

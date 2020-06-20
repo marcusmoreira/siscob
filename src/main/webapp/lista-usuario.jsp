@@ -7,11 +7,11 @@
 </head>
 <body>
  <center>
-  <h1>Usuários</h1>
+  <h1>Lista de usuários</h1>
         <h2>
-         <a href="new">Adicionar novo usuário</a>
+         <a href="new">Adicionar usuário</a>
          &nbsp;&nbsp;&nbsp;
-         <a href="list">Lista todos</a>
+         <a href="list">Listar todos</a>
          
         </h2>
  </center>

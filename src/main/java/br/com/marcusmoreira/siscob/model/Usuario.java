@@ -6,19 +6,19 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="USUARIO")
+@Table(name="usuario")
 public class Usuario {
     @Column(name="nome")
-    private String nome;
+    protected String nome;
     @Column(name="cargo")
-    private String cargo;
+    protected String cargo;
     @Id
     @Column(name="login")
-    private String login;
+    protected String login;
     @Column(name="senha")
-    private String senha;
+    protected String senha;
     @Column(name="email")
-    private String email;
+    protected String email;
 
     public Usuario(){
         

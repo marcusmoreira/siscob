@@ -3,15 +3,15 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
- <title>User Management Application</title>
+ <title>SisCob - Sistema de Cobrança</title>
 </head>
 <body>
  <center>
-  <h1>User Management</h1>
+  <h1>Usuários</h1>
         <h2>
-         <a href="new">Add New User</a>
+         <a href="new">Adicionar usuário</a>
          &nbsp;&nbsp;&nbsp;
-         <a href="list">List All Users</a>
+         <a href="list">Listar todos</a>
          
         </h2>
  </center>
@@ -26,10 +26,10 @@
             <caption>
              <h2>
               <c:if test="${user != null}">
-               Edit User
+               Editar
               </c:if>
               <c:if test="${user == null}">
-               Add New User
+               Adicioar usuário
               </c:if>
              </h2>
             </caption>
@@ -37,26 +37,42 @@
            <input type="hidden" name="login" value="<c:out value='${user.login}' />" />
           </c:if>            
             <tr>
-                <th>User Name: </th>
+                <th>Nome: </th>
                 <td>
-                 <input type="text" name="name" size="45"
+                 <input type="text" name="nome" size="45"
                    value="<c:out value='${user.nome}' />"
                   />
                 </td>
             </tr>
             <tr>
-                <th>User Email: </th>
+                <th>Cargo: </th>
                 <td>
-                 <input type="text" name="email" size="45"
-                   value="<c:out value='${user.email}' />"
+                 <input type="text" name="cargo" size="45"
+                   value="<c:out value='${user.cargo}' />"
                  />
                 </td>
             </tr>
             <tr>
-                <th>Country: </th>
+                <th>Login: </th>
                 <td>
-                 <input type="text" name="country" size="15"
-                   value="<c:out value='${user.country}' />"
+                 <input type="text" name="login" size="15"
+                   value="<c:out value='${user.login}' />"
+                 />
+                </td>
+            </tr>
+            <tr>
+                <th>Senha: </th>
+                <td>
+                 <input type="text" name="senha" size="15"
+                   value="<c:out value='${user.senha}' />"
+                 />
+                </td>
+            </tr>
+            <tr>
+                <th>E-mail: </th>
+                <td>
+                 <input type="text" name="email" size="15"
+                   value="<c:out value='${user.email}' />"
                  />
                 </td>
             </tr>
