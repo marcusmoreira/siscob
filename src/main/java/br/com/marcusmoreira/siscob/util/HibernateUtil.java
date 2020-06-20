@@ -23,25 +23,25 @@ public class HibernateUtil {
 
     // Hibernate settings equivalent to hibernate.cfg.xml's properties
     Properties settings = new Properties();
-    settings.put(Environment.DRIVER, "com.mysql.jdbc.Driver");
-    settings.put(Environment.URL, "jdbc:mysql://localhost:3306/siscob?useSSL=false");
+    settings.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
+    settings.put(Environment.URL, "jdbc:mysql://localhost:3306/siscob?useTimezone=true&serverTimezone=UTC");
     settings.put(Environment.USER, "root");
     settings.put(Environment.PASS, "123456");
-    settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
-
+    settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQLInnoDBDialect");
+    
     settings.put(Environment.SHOW_SQL, "true");
     settings.put(Environment.FORMAT_SQL, "true");
     settings.put(Environment.USE_SQL_COMMENTS, "true");
     
     settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
 
-    settings.put(Environment.HBM2DDL_AUTO, "create-drop");
+    //settings.put(Environment.HBM2DDL_AUTO, "validate");
 
     configuration.setProperties(settings);
     configuration.addAnnotatedClass(Usuario.class);
-    //configuration.addAnnotatedClass(Pessoa.class);
-    //configuration.addAnnotatedClass(Divida.class);
-    //configuration.addAnnotatedClass(Pagamento.class);
+    configuration.addAnnotatedClass(Pessoa.class);
+    configuration.addAnnotatedClass(Divida.class);
+    configuration.addAnnotatedClass(Pagamento.class);
 
     ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
       .applySettings(configuration.getProperties()).build();

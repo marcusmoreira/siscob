@@ -78,7 +78,7 @@
             </tr>
             <tr>
              <td colspan="2" align="center">
-              <input type="submit" value="Save" />
+              <input type="submit" value="Salvar" />
              </td>
             </tr>
         </table>

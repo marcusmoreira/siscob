@@ -5,22 +5,22 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import br.com.marcusmoreira.siscob.model.Usuario;
+import br.com.marcusmoreira.siscob.model.Divida;
 import br.com.marcusmoreira.siscob.util.HibernateUtil;
 
-public class UsuarioDao {
+public class DividaDao {
 
      /**
-     * Grava usuario
-     * @param usuario
+     * Grava divida
+     * @param divida
      */    
-    public void saveUser(Usuario usuario) {
+    public void saveDebt(Divida divida) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
 
             transaction = session.beginTransaction();
 
-            session.save(usuario);
+            session.save(divida);
 
             transaction.commit();
         } catch (Exception e) {
@@ -33,15 +33,15 @@ public class UsuarioDao {
 
     /**
      * Atualiza usuario
-     * @param usuario
+     * @param divida
      */
-    public void updateUser(Usuario usuario) {
+    public void updateDebpt(Divida divida) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
 
             transaction = session.beginTransaction();
 
-            session.update(usuario);
+            session.update(divida);
 
             transaction.commit();
         } catch (Exception e) {
@@ -53,20 +53,20 @@ public class UsuarioDao {
     }
 
     /**
-     * Remover usuario
-     * @param login
+     * Remover divida
+     * @param divida
      */
-    public void deleteUser(String login) {
+    public void deleteDebt(int intDivida) {
 
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
 
             transaction = session.beginTransaction();
 
-            Usuario usuario = session.get(Usuario.class, login);
-            if (usuario != null) {
-                session.delete(usuario);
-                System.out.println("user is deleted");
+            Divida divida = session.get(Divida.class, intDivida);
+            if (divida != null) {
+                session.delete(divida);
+                System.out.println("debt is deleted");
             }
 
             transaction.commit();
@@ -83,15 +83,15 @@ public class UsuarioDao {
      * @param login
      * @return
      */    
-    public Usuario getUser(String login) {
+    public Divida getDebt(Divida divida) {
 
         Transaction transaction = null;
-        Usuario usuario = null;
+        Divida divida = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
 
             transaction = session.beginTransaction();
 
-            usuario = session.get(Usuario.class, login);
+            divida = session.get(Divida.class, divida.getIdDevedor());
 
             transaction.commit();
         } catch (Exception e) {

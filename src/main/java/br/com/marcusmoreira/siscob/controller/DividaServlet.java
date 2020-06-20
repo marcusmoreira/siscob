@@ -11,16 +11,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.marcusmoreira.siscob.dao.UsuarioDao;
-import br.com.marcusmoreira.siscob.model.Usuario;
+import br.com.marcusmoreira.siscob.dao.DividaDao;
+import br.com.marcusmoreira.siscob.model.Divida;
 
 @WebServlet("/")
-public class UsuarioServlet extends HttpServlet {
+public class DividaServlet extends HttpServlet {
     private static final long serialVersionUID = 1;
-    private UsuarioDao usuarioDao;
+    private DividaDao dividaDao;
 
     public void init() {
-        usuarioDao = new UsuarioDao();
+        dividaDao = new DividaDao();
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -46,9 +46,6 @@ public class UsuarioServlet extends HttpServlet {
                 case "/edit":
                     showEditForm(request, response);
                     break;
-                case "/update":
-                    updateUser(request, response);
-                    break;
                 default:
                     listUser(request, response);
                     break;
@@ -58,17 +55,17 @@ public class UsuarioServlet extends HttpServlet {
         }
     }
 
-    private void listUser(HttpServletRequest request, HttpServletResponse response)
+    private void listDebt(HttpServletRequest request, HttpServletResponse response)
     throws SQLException, IOException, ServletException {
-        List < Usuario > listOfUser = usuarioDao.getAllUser();
-        request.setAttribute("listUser", listOfUser);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("lista-usuario.jsp");
+        List < Divida > listOfDebt = dividaDao.getAllDebt();
+        request.setAttribute("listDebt", listOfDebt);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("lista-divida.jsp");
         dispatcher.forward(request, response);
     }
 
     private void showNewForm(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("usuario.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("divida.jsp");
         dispatcher.forward(request, response);
     }
 
