@@ -5,22 +5,22 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import br.com.marcusmoreira.siscob.model.Divida;
+import br.com.marcusmoreira.siscob.model.Pagamento;
 import br.com.marcusmoreira.siscob.util.HibernateUtil;
 
-public class DividaDao {
+public class PagamentoDao {
 
      /**
-     * Grava divida
-     * @param divida
+     * Grava pagamento
+     * @param pagamento
      */    
-    public void saveDebt(Divida divida) {
+    public void savePayment(Pagamento pagamento) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
 
             transaction = session.beginTransaction();
 
-            session.save(divida);
+            session.save(pagamento);
 
             transaction.commit();
         } catch (Exception e) {
@@ -32,16 +32,16 @@ public class DividaDao {
     }
 
     /**
-     * Atualiza divida
-     * @param divida
+     * Atualiza pagamento
+     * @param pagamento
      */
-    public void updateDebt(Divida divida) {
+    public void updatePayment(Pagamento pagamento) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
 
             transaction = session.beginTransaction();
 
-            session.update(divida);
+            session.update(pagamento);
 
             transaction.commit();
         } catch (Exception e) {
@@ -53,20 +53,20 @@ public class DividaDao {
     }
 
     /**
-     * Remover divida
-     * @param id_divida
+     * Remover pagamento
+     * @param id_pagamento
      */
-    public void deleteDebt(int id_divida) {
+    public void deleteUser(int id_pagamento) {
 
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
 
             transaction = session.beginTransaction();
 
-            Divida divida = session.get(Divida.class, id_divida);
-            if (divida != null) {
-                session.delete(divida);
-                System.out.println("debt is deleted");
+            Pagamento pagamento = session.get(Pagamento.class, id_pagamento);
+            if (pagamento != null) {
+                session.delete(pagamento);
+                System.out.println("payment is deleted");
             }
 
             transaction.commit();
@@ -79,19 +79,19 @@ public class DividaDao {
     }
 
      /**
-     * Pega divida por id_divida
-     * @param id_divida
+     * Pega pagamento por id_pagamento
+     * @param id_pagamento
      * @return
      */    
-    public Divida getDebt(int id_divida) {
+    public Pagamento getPayment(int id_pagamento) {
 
         Transaction transaction = null;
-        Divida divida = null;
+        Pagamento pagamento = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
 
             transaction = session.beginTransaction();
 
-            divida = session.get(Divida.class, id_divida);
+            pagamento = session.get(Pagamento.class, id_pagamento);
 
             transaction.commit();
         } catch (Exception e) {
@@ -100,23 +100,23 @@ public class DividaDao {
             }
             e.printStackTrace();
         }
-        return divida;
+        return pagamento;
     }
 
     /**
-     * Todas as dividas
+     * Todos os pagamentos
      * @return
      */
     @SuppressWarnings("unchecked")
-    public List < Divida > getAllDebt() {
+    public List < Pagamento > getAllPayment() {
 
         Transaction transaction = null;
-        List < Divida > listOfDebt = null;
+        List < Pagamento > listOfPayment = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
 
             transaction = session.beginTransaction();
 
-            listOfDebt = session.createQuery("FROM divida").getResultList();
+            listOfPayment = session.createQuery("FROM pagamento").getResultList();
             
             transaction.commit();
         } catch (Exception e) {
@@ -125,6 +125,6 @@ public class DividaDao {
             }
             e.printStackTrace();
         }
-        return listOfDebt;
+        return listOfPayment;
     }
 }

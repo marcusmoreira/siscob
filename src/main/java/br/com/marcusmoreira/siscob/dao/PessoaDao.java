@@ -5,22 +5,22 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import br.com.marcusmoreira.siscob.model.Divida;
+import br.com.marcusmoreira.siscob.model.Pessoa;
 import br.com.marcusmoreira.siscob.util.HibernateUtil;
 
-public class DividaDao {
+public class PessoaDao {
 
      /**
-     * Grava divida
-     * @param divida
+     * Grava pessoa
+     * @param pessoa
      */    
-    public void saveDebt(Divida divida) {
+    public void savePeople(Pessoa pessoa) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
 
             transaction = session.beginTransaction();
 
-            session.save(divida);
+            session.save(pessoa);
 
             transaction.commit();
         } catch (Exception e) {
@@ -32,16 +32,16 @@ public class DividaDao {
     }
 
     /**
-     * Atualiza divida
-     * @param divida
+     * Atualiza pessoa
+     * @param pessoa
      */
-    public void updateDebt(Divida divida) {
+    public void updatePeople(Pessoa pessoa) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
 
             transaction = session.beginTransaction();
 
-            session.update(divida);
+            session.update(pessoa);
 
             transaction.commit();
         } catch (Exception e) {
@@ -53,20 +53,20 @@ public class DividaDao {
     }
 
     /**
-     * Remover divida
-     * @param id_divida
+     * Remover pessoa
+     * @param id_pessoa
      */
-    public void deleteDebt(int id_divida) {
+    public void deletePeople(int id_pessoa) {
 
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
 
             transaction = session.beginTransaction();
 
-            Divida divida = session.get(Divida.class, id_divida);
-            if (divida != null) {
-                session.delete(divida);
-                System.out.println("debt is deleted");
+            Pessoa pessoa = session.get(Pessoa.class, id_pessoa);
+            if (pessoa != null) {
+                session.delete(pessoa);
+                System.out.println("peaople is deleted");
             }
 
             transaction.commit();
@@ -79,19 +79,19 @@ public class DividaDao {
     }
 
      /**
-     * Pega divida por id_divida
-     * @param id_divida
+     * Pega pessoa por id_pessoa
+     * @param id_pessoa
      * @return
      */    
-    public Divida getDebt(int id_divida) {
+    public Pessoa getPeople(int id_pessoa) {
 
         Transaction transaction = null;
-        Divida divida = null;
+        Pessoa pessoa = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
 
             transaction = session.beginTransaction();
 
-            divida = session.get(Divida.class, id_divida);
+            pessoa = session.get(Pessoa.class, id_pessoa);
 
             transaction.commit();
         } catch (Exception e) {
@@ -100,23 +100,23 @@ public class DividaDao {
             }
             e.printStackTrace();
         }
-        return divida;
+        return pessoa;
     }
 
     /**
-     * Todas as dividas
+     * Todas as pessoas
      * @return
      */
     @SuppressWarnings("unchecked")
-    public List < Divida > getAllDebt() {
+    public List < Pessoa > getAllPeople() {
 
         Transaction transaction = null;
-        List < Divida > listOfDebt = null;
+        List < Pessoa > listOfPeople = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
 
             transaction = session.beginTransaction();
 
-            listOfDebt = session.createQuery("FROM divida").getResultList();
+            listOfPeople = session.createQuery("FROM people").getResultList();
             
             transaction.commit();
         } catch (Exception e) {
@@ -125,6 +125,6 @@ public class DividaDao {
             }
             e.printStackTrace();
         }
-        return listOfDebt;
+        return listOfPeople;
     }
 }

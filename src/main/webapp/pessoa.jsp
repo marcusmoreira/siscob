@@ -7,72 +7,80 @@
 </head>
 <body>
  <center>
-  <h1>Usuário</h1>
+  <h1>Pessoa</h1>
         <h2>
-         <a href="new">Adicionar usuário</a>
+         <a href="new">Adicionar pessoa</a>
          &nbsp;&nbsp;&nbsp;
          <a href="list">Listar todos</a>
          
         </h2>
  </center>
     <div align="center">
-  <c:if test="${user != null}">
+  <c:if test="${people != null}">
    <form action="update" method="post">
         </c:if>
-        <c:if test="${user == null}">
+        <c:if test="${people == null}">
    <form action="insert" method="post">
         </c:if>
         <table border="1" cellpadding="5">
             <caption>
              <h2>
-              <c:if test="${user != null}">
+              <c:if test="${people != null}">
                Editar
               </c:if>
-              <c:if test="${user == null}">
-               Adicioar usuário
+              <c:if test="${people == null}">
+               Adicioar pessoa
               </c:if>
              </h2>
             </caption>
-          <c:if test="${user != null}">
-           <input type="hidden" name="login" value="<c:out value='${user.login}' />" />
+          <c:if test="${pessoa != null}">
+           <input type="hidden" name="idPessoa" value="<c:out value='${people.idPessoa}' />" />
           </c:if>            
             <tr>
                 <th>Nome: </th>
                 <td>
-                 <input type="text" name="nome" size="45"
-                   value="<c:out value='${user.nome}' />"
+                 <input type="text" name="nomePessoa" size="45"
+                   value="<c:out value='${people.nomePessoa}' />"
                   />
                 </td>
             </tr>
             <tr>
-                <th>Cargo: </th>
+                <th>Endereço </th>
                 <td>
-                 <input type="text" name="cargo" size="45"
-                   value="<c:out value='${user.cargo}' />"
+                 <input type="text" name="endereco" size="45"
+                   value="<c:out value='${people.endereco}' />"
                  />
                 </td>
             </tr>
             <tr>
-                <th>Login: </th>
+                <th>UF: </th>
                 <td>
-                 <input type="text" name="login" size="15"
-                   value="<c:out value='${user.login}' />"
+                 <input type="text" name="uf" size="15"
+                   value="<c:out value='${people.uf}' />"
                  />
                 </td>
             </tr>
             <tr>
-                <th>Senha: </th>
+                <th>Telefone </th>
                 <td>
-                 <input type="text" name="senha" size="15"
-                   value="<c:out value='${user.senha}' />"
+                 <input type="text" name="telefone" size="15"
+                   value="<c:out value='${people.telefone}' />"
                  />
                 </td>
             </tr>
             <tr>
-                <th>E-mail: </th>
+                <th>Documento: </th>
+                <td>
+                 <input type="text" name="documento" size="15"
+                   value="<c:out value='${people.documento}' />"
+                 />
+                </td>
+            </tr>
+            <tr>
+                <th>E-mail </th>
                 <td>
                  <input type="text" name="email" size="15"
-                   value="<c:out value='${user.email}' />"
+                   value="<c:out value='${people.email}' />"
                  />
                 </td>
             </tr>

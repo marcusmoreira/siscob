@@ -13,10 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.marcusmoreira.siscob.dao.DividaDao;
 import br.com.marcusmoreira.siscob.model.Divida;
+import java.sql.Date;
 
-@WebServlet("/")
+@WebServlet("/divida")
 public class DividaServlet extends HttpServlet {
-    private static final long serialVersionUID = 1;
+    private static final long serialVersionUID = 1L;
     private DividaDao dividaDao;
 
     public void init() {
@@ -38,16 +39,19 @@ public class DividaServlet extends HttpServlet {
                     showNewForm(request, response);
                     break;
                 case "/insert":
-                    insertUser(request, response);
+                    insertDebt(request, response);
                     break;
                 case "/delete":
-                    deleteUser(request, response);
+                    deleteDebt(request, response);
                     break;
                 case "/edit":
                     showEditForm(request, response);
                     break;
+                case "/update":
+                    updateDebt(request, response);
+                    break;                    
                 default:
-                    listUser(request, response);
+                    listDebt(request, response);
                     break;
             }
         } catch (SQLException ex) {
@@ -71,44 +75,44 @@ public class DividaServlet extends HttpServlet {
 
     private void showEditForm(HttpServletRequest request, HttpServletResponse response)
     throws SQLException, ServletException, IOException {
-        String login = request.getParameter("login");
-        Usuario existingUser = usuarioDao.getUser(login);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("usuario.jsp");
-        request.setAttribute("user", existingUser);
+        int idDivida = Integer.parseInt(request.getParameter("idDivida"));
+        Divida existingDebt = dividaDao.getDebt(idDivida);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("divida.jsp");
+        request.setAttribute("debt", existingDebt);
         dispatcher.forward(request, response);
 
     }
 
-    private void insertUser(HttpServletRequest request, HttpServletResponse response)
+    private void insertDebt(HttpServletRequest request, HttpServletResponse response)
     throws SQLException, IOException {
-        String nome = request.getParameter("nome");
-        String cargo = request.getParameter("cargo");
-        String login = request.getParameter("login");
-        String senha = request.getParameter("senha");
-        String email = request.getParameter("email");
-        
-        Usuario novoUsuario = new Usuario(nome, cargo, login, senha, email);
-        usuarioDao.saveUser(novoUsuario);
+        int idDivida = Integer.parseInt(request.getParameter("idDivida"));
+        int idCredor = Integer.parseInt(request.getParameter("idCredor"));
+        Date dataAtualizacao = Date.valueOf(request.getParameter("dataAtualicao"));
+        float valorDivida = Float.parseFloat(request.getParameter("valorDivida"));
+        int idDevedor = Integer.parseInt(request.getParameter("idDevedor"));
+                
+        Divida novaDivida = new Divida(idDivida, idCredor, dataAtualizacao, valorDivida, idDevedor);
+        dividaDao.saveDebt(novaDivida);
         response.sendRedirect("list");
     }
 
-    private void updateUser(HttpServletRequest request, HttpServletResponse response)
+    private void updateDebt(HttpServletRequest request, HttpServletResponse response)
     throws SQLException, IOException {
-        String nome = request.getParameter("nome");
-        String cargo = request.getParameter("cargo");
-        String login = request.getParameter("login");
-        String senha = request.getParameter("senha");
-        String email = request.getParameter("email");
+        int idDivida = Integer.parseInt(request.getParameter("idDivida"));
+        int idCredor = Integer.parseInt(request.getParameter("idCredor"));
+        Date dataAtualizacao = Date.valueOf(request.getParameter("dataAtualicao"));
+        float valorDivida = Float.parseFloat(request.getParameter("valorDivida"));
+        int idDevedor = Integer.parseInt(request.getParameter("idDevedor"));
 
-        Usuario usuario = new Usuario(nome, cargo, login, senha, email);
-        usuarioDao.updateUser(usuario);
+        Divida novaDivida = new Divida(idDivida, idCredor, dataAtualizacao, valorDivida, idDevedor);
+        dividaDao.updateDebt(novaDivida);
         response.sendRedirect("list");
     }
 
-    private void deleteUser(HttpServletRequest request, HttpServletResponse response)
+    private void deleteDebt(HttpServletRequest request, HttpServletResponse response)
     throws SQLException, IOException {
-        String login = request.getParameter("login");
-        usuarioDao.deleteUser(login);
+        int id_divida = Integer.parseInt(request.getParameter("id_divida"));
+        dividaDao.deleteDebt(id_divida);
         response.sendRedirect("list");
     }
 }

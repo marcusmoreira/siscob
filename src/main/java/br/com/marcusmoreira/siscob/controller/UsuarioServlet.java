@@ -14,9 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.marcusmoreira.siscob.dao.UsuarioDao;
 import br.com.marcusmoreira.siscob.model.Usuario;
 
-@WebServlet("/")
+@WebServlet("/usuario")
 public class UsuarioServlet extends HttpServlet {
-    private static final long serialVersionUID = 1;
+    private static final long serialVersionUID = 1L;
     private UsuarioDao usuarioDao;
 
     public void init() {
