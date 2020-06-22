@@ -54,16 +54,16 @@ public class PagamentoDao {
 
     /**
      * Remover pagamento
-     * @param id_pagamento
+     * @param idPagamento
      */
-    public void deleteUser(int id_pagamento) {
+    public void deletePayment(int idPagamento) {
 
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
 
             transaction = session.beginTransaction();
 
-            Pagamento pagamento = session.get(Pagamento.class, id_pagamento);
+            Pagamento pagamento = session.get(Pagamento.class, idPagamento);
             if (pagamento != null) {
                 session.delete(pagamento);
                 System.out.println("payment is deleted");
@@ -80,10 +80,10 @@ public class PagamentoDao {
 
      /**
      * Pega pagamento por id_pagamento
-     * @param id_pagamento
+     * @param idPagamento
      * @return
      */    
-    public Pagamento getPayment(int id_pagamento) {
+    public Pagamento getPayment(int idPagamento) {
 
         Transaction transaction = null;
         Pagamento pagamento = null;
@@ -91,7 +91,7 @@ public class PagamentoDao {
 
             transaction = session.beginTransaction();
 
-            pagamento = session.get(Pagamento.class, id_pagamento);
+            pagamento = session.get(Pagamento.class, idPagamento);
 
             transaction.commit();
         } catch (Exception e) {

@@ -12,42 +12,42 @@
 </head>
 <body>
  <center>
-  <h1>Dívida</h1>
+  <h1>Pagamento</h1>
         <h2>
          <a href="${pageContext.request.contextPath}/index.jsp">Home</a>
          &nbsp;&nbsp;&nbsp;
-         <a href="new">Adicionar dívida</a>
+            <a href="new">Adicionar pagamento</a>
          &nbsp;&nbsp;&nbsp;
-         <a href="list">Listar todas</a>
+         <a href="list">Listar todos</a>
          
         </h2>
  </center>
     <div align="center">
-  <c:if test="${debt != null}">
+  <c:if test="${payment != null}">
    <form action="update" method="post">
         </c:if>
-        <c:if test="$debt == null}">
+        <c:if test="payment == null}">
    <form action="insert" method="post">
         </c:if>
         <table border="1" cellpadding="5">
             <caption>
              <h2>
-              <c:if test="${debt != null}">
+              <c:if test="${payment != null}">
                Editar
               </c:if>
-              <c:if test="${debt == null}">
-               Adicioar dívida
+              <c:if test="${payment == null}">
+               Adicioar pagamento
               </c:if>
              </h2>
             </caption>
-          <c:if test="${debt != null}">
-           <input type="hidden" name="idDivida" value="<c:out value='${debt.idDivida}' />" />
+          <c:if test="${payment != null}">
+           <input type="hidden" name="idPagamento" value="<c:out value='${payment.idPagamento}' />" />
           </c:if>            
             <tr>
-                <th>Credor: </th>
+                <th>Divida </th>
                 <td>
-                 <input type="text" name="idCredor" size="45"
-                   value="<c:out value='${debt.idCredor}' />"
+                 <input type="text" name="idDivida" size="45"
+                   value="<c:out value='${payment.idDivida}' />"
                   />
                 </td>
             </tr>
@@ -55,23 +55,15 @@
                 <th>Data: </th>
                 <td>
                  <input type="text" name="dataAtualizacao" size="45"
-                   value="<c:out value='${debt.dataAtualizacao}' />"
+                   value="<c:out value='${payment.dataAtualizacao}' />"
                  />
                 </td>
             </tr>
             <tr>
                 <th>Valor </th>
                 <td>
-                 <input type="text" name="valorDivida" size="15"
-                   value="<c:out value='${debt.valorDivida}' />"
-                 />
-                </td>
-            </tr>
-            <tr>
-                <th>Devedor: </th>
-                <td>
-                 <input type="text" name="idDevedor" size="15"
-                   value="<c:out value='${debt.idDevedor}' />"
+                 <input type="text" name="valorpago" size="15"
+                   value="<c:out value='${payment.valorPago}' />"
                  />
                 </td>
             </tr>

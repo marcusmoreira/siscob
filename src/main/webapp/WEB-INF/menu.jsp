@@ -20,7 +20,7 @@
 
                    <li><a href="#">Atividades</a>
                       <ul class="submenu">
-                        <li><a href="${pageContext.request.contextPath}/Administrador/Funcionario/AltSen.jsp">Trocar Senha</a></li>
+                        <li><a href="${pageContext.request.contextPath}">Trocar Senha</a></li>
                       </ul>
                     </li>
 

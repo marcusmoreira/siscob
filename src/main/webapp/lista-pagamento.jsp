@@ -12,34 +12,33 @@
 </head>
 <body>
  <center>
-  <h1>Lista de dívidas</h1>
+  <h1>Lista de pagamentos</h1>
         <h2>
          <a href="${pageContext.request.contextPath}/index.jsp">Home</a>
          &nbsp;&nbsp;&nbsp;
-         <a href="new">Adicionar dvida</a>
+         <a href="new">Adicionar pagamento</a>
          &nbsp;&nbsp;&nbsp;
-         <a href="list">Listar todas        </h2>
+         <a href="list">Listar todos</h2>
  </center>
     <div align="center">
         <table border="1" cellpadding="5">
-            <caption><h2>Lista de dívidas</h2></caption>
+            <caption><h2>Lista de pagamentos</h2></caption>
             <tr>
-                <th>Nome</th>
-                <th>Cargo</th>
-                <th>Login</th>
-                <th>Senha</th>
-                <th>E-mail</th>
+                <th>Pagamento</th>
+                <th>Divida</th>
+                <th>Data</th>
+                <th>Valor pago</th>
             </tr>
-            <c:forEach var="debt" items="${listDebt}">
+            <c:forEach var="payment" items="${listPayment}">
                 <tr>
-                    <td><c:out value="${debt.idCredor}" /></td>
+                    <td><c:out value="${debt.idPagamento}" /></td>
+                    <td><c:out value="${debt.idDivida}" /></td>
                     <td><c:out value="${debt.dataAtualizacao}" /></td>
-                    <td><c:out value="${debt.valorDivida}" /></td>
-                    <td><c:out value="${debt.idDevedor}" /></td>
+                    <td><c:out value="${debt.valorPago}" /></td>
                     <td>
-                     <a href="edit?idDivida=<c:out value='${debt.idDivida}' />">Editar</a>
+                     <a href="edit?idPaymento=<c:out value='${payment.idPagamento}' />">Editar</a>
                      &nbsp;&nbsp;&nbsp;&nbsp;
-                     <a href="delete?idDivida=<c:out value='${debt.idDivida}' />">Remover</a>                     
+                     <a href="delete?idPayment=<c:out value='${payment.idPagamento}' />">Remover</a>                     
                     </td>
                 </tr>
             </c:forEach>
