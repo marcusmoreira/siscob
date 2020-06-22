@@ -8,6 +8,6 @@
     <c:redirect url="login.jsp" />
 </c:if>
  
-<a href="logout.jsp">Logout 
-    <c:out value="${sessionScope['loginUser']}" />
+<a href="logout.jsp">Sair (
+    <c:out value="${sessionScope['loginUser']}" />)
 </a>

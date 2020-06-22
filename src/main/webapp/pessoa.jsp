@@ -6,9 +6,11 @@
  <title>SisCob - Sistema de Cobrança</title>
 </head>
 <body>
- <center>
+<center>
   <h1>Pessoa</h1>
         <h2>
+         <a href="${pageContext.request.contextPath}/index.jsp">Home</a>
+         &nbsp;&nbsp;&nbsp;
          <a href="new">Adicionar pessoa</a>
          &nbsp;&nbsp;&nbsp;
          <a href="list">Listar todos</a>

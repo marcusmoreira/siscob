@@ -9,6 +9,8 @@
  <center>
   <h1>Lista de dívidas</h1>
         <h2>
+         <a href="${pageContext.request.contextPath}/index.jsp">Home</a>
+         &nbsp;&nbsp;&nbsp;
          <a href="new">Adicionar dvida</a>
          &nbsp;&nbsp;&nbsp;
          <a href="list">Listar todas        </h2>

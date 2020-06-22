@@ -10,15 +10,34 @@
         <title>SisCob - Sistema de Cobrança</title>
     </head>
     <body>
-        <h1>Informe usuário e senha</h1>
- 
-        <form action="loginAuthenticate.jsp" >
-            Usuário: <input type="text" name="username"/><br/>
-            Senha: <input type="password" name="password"/><br/>
-            <input type="submit" />
-        </form>
-        <font color="red"><c:if test="${not empty param.errMsg}">
-            <c:out value="${param.errMsg}" />
-            </c:if></font>
+        <center>
+            <h1>SisCob - Sistema de Cobrança</h1>
+            <h2>Informe o usuário e a senha</h2>
+            <h3><font color="red"><c:if test="${not empty param.errMsg}"><c:out value="${param.errMsg}" /></c:if></font>                    
+            </h3>
+        </center>
+        <div align="center">
+            <form action="loginAuthenticate.jsp" >
+                <table border="0" cellpadding="5">
+                    <tr>
+                        <th align="left">Usuário: </th>
+                        <td>
+                            <input type="text" name="username"/><br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th align="left">Senha: </th>
+                        <td>
+                            <input type="password" name="password"/><br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="right">
+                            <input type="submit" value="Entrar" />
+                        </td>
+                    </tr>
+                </table>                
+            </form>
+        </div>
     </body>
 </html>

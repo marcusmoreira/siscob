@@ -9,9 +9,11 @@
  <center>
   <h1>Usuário</h1>
         <h2>
-         <a href="new">Adicionar usuário</a>
+         <a href="${pageContext.request.contextPath}/index.jsp">Home</a>
          &nbsp;&nbsp;&nbsp;
-         <a href="list">Listar todos</a>
+         <a href="${pageContext.request.contextPath}/usuario?new">Adicionar usuário</a>
+         &nbsp;&nbsp;&nbsp;
+         <a href="${pageContext.request.contextPath}/usuario?list">Listar todos</a>
          
         </h2>
  </center>

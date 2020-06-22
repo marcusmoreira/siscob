@@ -8,12 +8,12 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Authentication page</title>
+    <title>SisCob - Sistema de Cobrança</title>
   </head>
   <body>
     <c:if test="${ empty param.username or empty param.password}">
       <c:redirect url="login.jsp" >
-              <c:param name="errMsg" value="Please Enter UserName and Password" />
+              <c:param name="errMsg" value="O usuario e a senha sao obrigatorios!" />
       </c:redirect>
        
     </c:if>
@@ -39,7 +39,7 @@
           </c:when>
           <c:otherwise>
             <c:redirect url="login.jsp" >
-              <c:param name="errMsg" value="Username/password does not match" />
+              <c:param name="errMsg" value="Usuario ou senha invalido!" />
             </c:redirect>
           </c:otherwise>
         </c:choose>

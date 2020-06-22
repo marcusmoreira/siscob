@@ -9,6 +9,8 @@
  <center>
   <h1>Lista de pessoas</h1>
         <h2>
+         <a href="${pageContext.request.contextPath}/index.jsp">Home</a>
+         &nbsp;&nbsp;&nbsp;
          <a href="new">Adicionar pessoa</a>
          &nbsp;&nbsp;&nbsp;
          <a href="list">Listar todos</a>
