@@ -26,23 +26,23 @@
 
                   <li><a href="#">Usuario</a>
                 <ul class="submenu">
-                     <li><a href="${pageContext.request.contextPath}/usuario.jsp">Cadastro de usuario</a></li>
-                     <li><a href="${pageContext.request.contextPath}/lista-usuario.jsp">Listar usuarios</a></li>
+                     <li><a href="${pageContext.request.contextPath}/novoUsuario">Cadastro de usuario</a></li>
+                     <li><a href="${pageContext.request.contextPath}/listaUsuario">Listar usuarios</a></li>
                 </ul>
                     </li>
                     <li><a href="#">Pessoa</a>
                 <ul class="submenu">
-                     <li><a href="${pageContext.request.contextPath}/pessoa.jsp">Cadastro de pessoa</a></li>
-                     <li><a href="${pageContext.request.contextPath}/lista-pessoa.jsp">Listar pessoas</a></li>
+                     <li><a href="${pageContext.request.contextPath}/inserePessoa">Cadastro de pessoa</a></li>
+                     <li><a href="${pageContext.request.contextPath}/listaPessoa">Listar pessoas</a></li>
                 </ul>
                     </li>
 
                  <li><a href="#">Divida e pagamentos</a>
                     <ul class="submenu">
-                     <li><a href="${pageContext.request.contextPath}/divida.jsp">Incluir divida</a></li>
-                     <li><a href="${pageContext.request.contextPath}/lista-divida.jsp">Listar dividas</a></li>
-                     <li><a href="${pageContext.request.contextPath}/pagamento.jsp">Realizar pagamento</a></li>
-                     <li><a href="${pageContext.request.contextPath}/lista-pagamento.jsp">Listar pagamentos</a></li>
+                     <li><a href="${pageContext.request.contextPath}/novaDivida">Incluir divida</a></li>
+                     <li><a href="${pageContext.request.contextPath}/listaDivida">Listar dividas</a></li>
+                     <li><a href="${pageContext.request.contextPath}/novoPagamento">Realizar pagamento</a></li>
+                     <li><a href="${pageContext.request.contextPath}/listaPagamento">Listar pagamentos</a></li>
                      </li>
                </ul>
                     </div>

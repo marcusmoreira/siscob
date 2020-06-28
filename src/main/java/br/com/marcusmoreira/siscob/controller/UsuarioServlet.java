@@ -14,7 +14,15 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.marcusmoreira.siscob.dao.UsuarioDao;
 import br.com.marcusmoreira.siscob.model.Usuario;
 
-@WebServlet("/usuario")
+@WebServlet(name="Usuario",
+            //loadOnStartup = 1,
+            urlPatterns = {"/novoUsuario",
+                           "/insereUsuario",
+                           "/removeUsuario",
+                           "/editaUsuario",
+                           "/atualizaUsuario",
+                           "/listaUsuario"})
+
 public class UsuarioServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private UsuarioDao usuarioDao;
@@ -34,19 +42,19 @@ public class UsuarioServlet extends HttpServlet {
 
         try {
             switch (action) {
-                case "/new":
+                case "/novoUsuario":
                     showNewForm(request, response);
                     break;
-                case "/insert":
+                case "/insereUsuario":
                     insertUser(request, response);
                     break;
-                case "/delete":
+                case "/removeUsuario":
                     deleteUser(request, response);
                     break;
-                case "/edit":
+                case "/editaUsuario":
                     showEditForm(request, response);
                     break;
-                case "/update":
+                case "/atualizaUsuario":
                     updateUser(request, response);
                     break;
                 default:
@@ -92,7 +100,7 @@ public class UsuarioServlet extends HttpServlet {
         
         Usuario novoUsuario = new Usuario(nome, cargo, login, senha, email);
         usuarioDao.saveUser(novoUsuario);
-        response.sendRedirect("list");
+        response.sendRedirect("listaUsuario");
     }
 
     private void updateUser(HttpServletRequest request, HttpServletResponse response)
@@ -105,13 +113,13 @@ public class UsuarioServlet extends HttpServlet {
 
         Usuario usuario = new Usuario(nome, cargo, login, senha, email);
         usuarioDao.updateUser(usuario);
-        response.sendRedirect("list");
+        response.sendRedirect("listaUsuario");
     }
 
     private void deleteUser(HttpServletRequest request, HttpServletResponse response)
     throws SQLException, IOException {
         String login = request.getParameter("login");
         usuarioDao.deleteUser(login);
-        response.sendRedirect("list");
+        response.sendRedirect("listaUsuario");
     }
 }

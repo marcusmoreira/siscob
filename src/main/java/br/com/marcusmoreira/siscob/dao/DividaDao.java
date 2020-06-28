@@ -116,7 +116,7 @@ public class DividaDao {
 
             transaction = session.beginTransaction();
 
-            listOfDebt = session.createQuery("FROM divida").getResultList();
+            listOfDebt = session.createQuery("FROM Divida").getResultList();
             
             transaction.commit();
         } catch (Exception e) {

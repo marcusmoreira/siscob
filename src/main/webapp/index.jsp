@@ -13,6 +13,6 @@
         <h1>SisCob - Sistema de Cobrança</h1>
         <%@include file="header.jsp" %>
 
-        <jsp:include page="/WEB-INF/menu.jsp" />
+        <jsp:include page="WEB-INF/menu.jsp" />
     </body>
 </html>

@@ -15,7 +15,15 @@ import br.com.marcusmoreira.siscob.dao.DividaDao;
 import br.com.marcusmoreira.siscob.model.Divida;
 import java.sql.Date;
 
-@WebServlet("/divida")
+@WebServlet(name="Divida",
+            //loadOnStartup = 1,
+            urlPatterns = {"/novaDivida",
+                           "/insereDivida",
+                           "/removeDivida",
+                           "/editaDivida",
+                           "/atualizaDivida",
+                           "/listaDivida"})
+
 public class DividaServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private DividaDao dividaDao;
@@ -35,19 +43,19 @@ public class DividaServlet extends HttpServlet {
 
         try {
             switch (action) {
-                case "/new":
+                case "/novaDivida":
                     showNewForm(request, response);
                     break;
-                case "/insert":
+                case "/insereDivida":
                     insertDebt(request, response);
                     break;
-                case "/delete":
+                case "/removeDivida":
                     deleteDebt(request, response);
                     break;
-                case "/edit":
+                case "/editaDivida":
                     showEditForm(request, response);
                     break;
-                case "/update":
+                case "/atualizaDivida":
                     updateDebt(request, response);
                     break;                    
                 default:
@@ -93,7 +101,7 @@ public class DividaServlet extends HttpServlet {
                 
         Divida novaDivida = new Divida(idDivida, idCredor, dataAtualizacao, valorDivida, idDevedor);
         dividaDao.saveDebt(novaDivida);
-        response.sendRedirect("list");
+        response.sendRedirect("listaDivida");
     }
 
     private void updateDebt(HttpServletRequest request, HttpServletResponse response)
@@ -106,13 +114,13 @@ public class DividaServlet extends HttpServlet {
 
         Divida novaDivida = new Divida(idDivida, idCredor, dataAtualizacao, valorDivida, idDevedor);
         dividaDao.updateDebt(novaDivida);
-        response.sendRedirect("list");
+        response.sendRedirect("listaDivida");
     }
 
     private void deleteDebt(HttpServletRequest request, HttpServletResponse response)
     throws SQLException, IOException {
         int id_divida = Integer.parseInt(request.getParameter("id_divida"));
         dividaDao.deleteDebt(id_divida);
-        response.sendRedirect("list");
+        response.sendRedirect("listaDivida");
     }
 }

@@ -14,7 +14,15 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.marcusmoreira.siscob.dao.PessoaDao;
 import br.com.marcusmoreira.siscob.model.Pessoa;
 
-@WebServlet("/pessoa")
+@WebServlet(name="Pessoa",
+            //loadOnStartup = 1,
+            urlPatterns = {"/novaPessoa",
+                           "/inserePessoa",
+                           "/removePessoa",
+                           "/editaPessoa",
+                           "/atualizaPessoa",
+                           "/listaPessoa"})
+
 public class PessoaServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private PessoaDao pessoaDao;
@@ -34,19 +42,19 @@ public class PessoaServlet extends HttpServlet {
 
         try {
             switch (action) {
-                case "/new":
+                case "/novaPessoa":
                     showNewForm(request, response);
                     break;
-                case "/insert":
+                case "/inserePessoa":
                     insertPeople(request, response);
                     break;
-                case "/delete":
+                case "/removePessoa":
                     deletePeople(request, response);
                     break;
-                case "/edit":
+                case "/editaPessoa":
                     showEditForm(request, response);
                     break;
-                case "/update":
+                case "/atualizaPessoa":
                     updatePeople(request, response);
                     break;
                 default:
@@ -94,7 +102,7 @@ public class PessoaServlet extends HttpServlet {
           
         Pessoa novaPessoa = new Pessoa(nomePessoa, endereco, uf, telefone, documento, email);
         pessoaDao.savePeople(novaPessoa);
-        response.sendRedirect("list");
+        response.sendRedirect("listaPessoa");
     }
 
     private void updatePeople(HttpServletRequest request, HttpServletResponse response)
@@ -109,13 +117,13 @@ public class PessoaServlet extends HttpServlet {
 
         Pessoa pessoa = new Pessoa(idPessoa, nomePessoa, endereco, uf, telefone, documento, email);
         pessoaDao.updatePeople(pessoa);
-        response.sendRedirect("list");
+        response.sendRedirect("listaPessoa");
     }
 
     private void deletePeople(HttpServletRequest request, HttpServletResponse response)
     throws SQLException, IOException {
         int idPessoa = Integer.parseInt(request.getParameter("idPessoa"));
         pessoaDao.deletePeople(idPessoa);
-        response.sendRedirect("list");
+        response.sendRedirect("listaPessoa");
     }
 }

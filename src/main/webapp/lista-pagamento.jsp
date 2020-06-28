@@ -2,9 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+<%--
 <c:if test="${empty sessionScope['loginUser']}">
     <c:redirect url="login.jsp" />
 </c:if>
+--%>
 
 <html>
 <head>
@@ -16,9 +18,9 @@
         <h2>
          <a href="${pageContext.request.contextPath}/index.jsp">Home</a>
          &nbsp;&nbsp;&nbsp;
-         <a href="new">Adicionar pagamento</a>
+         <a href="novoPagamento">Adicionar pagamento</a>
          &nbsp;&nbsp;&nbsp;
-         <a href="list">Listar todos</h2>
+         <a href="listaPagamento">Listar todos</h2>
  </center>
     <div align="center">
         <table border="1" cellpadding="5">
@@ -36,9 +38,9 @@
                     <td><c:out value="${debt.dataAtualizacao}" /></td>
                     <td><c:out value="${debt.valorPago}" /></td>
                     <td>
-                     <a href="edit?idPaymento=<c:out value='${payment.idPagamento}' />">Editar</a>
+                     <a href="editaPagamento?idPaymento=<c:out value='${payment.idPagamento}' />">Editar</a>
                      &nbsp;&nbsp;&nbsp;&nbsp;
-                     <a href="delete?idPayment=<c:out value='${payment.idPagamento}' />">Remover</a>                     
+                     <a href="removePagamento?idPayment=<c:out value='${payment.idPagamento}' />">Remover</a>                     
                     </td>
                 </tr>
             </c:forEach>

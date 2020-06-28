@@ -2,9 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+<%--
 <c:if test="${empty sessionScope['loginUser']}">
     <c:redirect url="login.jsp" />
 </c:if>
+--%>
 
 <html>
 <head>
@@ -16,9 +18,9 @@
         <h2>
          <a href="${pageContext.request.contextPath}/index.jsp">Home</a>
          &nbsp;&nbsp;&nbsp;
-         <a href="new">Adicionar pessoa</a>
+         <a href="novaPessoa">Adicionar pessoa</a>
          &nbsp;&nbsp;&nbsp;
-         <a href="list">Listar todos</a>
+         <a href="listaPessoa">Listar todos</a>
          
         </h2>
  </center>
@@ -44,9 +46,9 @@
                     <td><c:out value="${people.documento}" /></td>
                     <td><c:out value="${people.email}" /></td>
                     <td>
-                     <a href="edit?idPessoa=<c:out value='${people.idPessoa}' />">Editar</a>
+                     <a href="editaPessoa?idPessoa=<c:out value='${people.idPessoa}' />">Editar</a>
                      &nbsp;&nbsp;&nbsp;&nbsp;
-                     <a href="delete?idPessoa=<c:out value='${people.idPessoa}' />">Remover</a>                     
+                     <a href="removePessoa?idPessoa=<c:out value='${people.idPessoa}' />">Remover</a>                     
                     </td>
                 </tr>
             </c:forEach>

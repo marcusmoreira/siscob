@@ -15,7 +15,15 @@ import br.com.marcusmoreira.siscob.dao.PagamentoDao;
 import br.com.marcusmoreira.siscob.model.Pagamento;
 import java.sql.Date;
 
-@WebServlet("/pagamento")
+@WebServlet(name="Pagamento",
+            //loadOnStartup = 1,
+            urlPatterns = {"/novoPagamento",
+                           "/inserePagamento",
+                           "/removePagamento",
+                           "/editaPagamento",
+                           "/atualizaPagamento",
+                           "/listaPagamento"})
+
 public class PagamentoServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private PagamentoDao pagamentoDao;
@@ -35,19 +43,19 @@ public class PagamentoServlet extends HttpServlet {
 
         try {
             switch (action) {
-                case "/new":
+                case "/novaPagamento":
                     showNewForm(request, response);
                     break;
-                case "/insert":
+                case "/inserePagamento":
                     insertPayment(request, response);
                     break;
-                case "/delete":
+                case "/removePagamento":
                     deletePayment(request, response);
                     break;
-                case "/edit":
+                case "/editaPagamento":
                     showEditForm(request, response);
                     break;
-                case "/update":
+                case "/atualizaPagamento":
                     updatePayment(request, response);
                     break;                    
                 default:
@@ -92,7 +100,7 @@ public class PagamentoServlet extends HttpServlet {
 
         Pagamento novoPagamento = new Pagamento(idPagamento, idDivida, dataAtualizacao, valorPago);
         pagamentoDao.savePayment(novoPagamento);
-        response.sendRedirect("list");
+        response.sendRedirect("listaPagamento");
     }
 
     private void updatePayment(HttpServletRequest request, HttpServletResponse response)
@@ -104,13 +112,13 @@ public class PagamentoServlet extends HttpServlet {
 
         Pagamento novoPagamento = new Pagamento(idPagamento, idDivida, dataAtualizacao, valorPago);
         pagamentoDao.updatePayment(novoPagamento);
-        response.sendRedirect("list");
+        response.sendRedirect("listaPagamento");
     }
 
     private void deletePayment(HttpServletRequest request, HttpServletResponse response)
     throws SQLException, IOException {
         int idPagamento = Integer.parseInt(request.getParameter("idPagamento"));
         pagamentoDao.deletePayment(idPagamento);
-        response.sendRedirect("list");
+        response.sendRedirect("listaPagamento");
     }
 }

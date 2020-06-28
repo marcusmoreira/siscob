@@ -116,7 +116,7 @@ public class PagamentoDao {
 
             transaction = session.beginTransaction();
 
-            listOfPayment = session.createQuery("FROM pagamento").getResultList();
+            listOfPayment = session.createQuery("FROM Pagamento").getResultList();
             
             transaction.commit();
         } catch (Exception e) {

@@ -116,7 +116,7 @@ public class PessoaDao {
 
             transaction = session.beginTransaction();
 
-            listOfPeople = session.createQuery("FROM people").getResultList();
+            listOfPeople = session.createQuery("FROM Pessoa").getResultList();
             
             transaction.commit();
         } catch (Exception e) {

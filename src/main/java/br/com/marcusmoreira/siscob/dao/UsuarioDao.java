@@ -116,7 +116,7 @@ public class UsuarioDao {
 
             transaction = session.beginTransaction();
 
-            listOfUser = session.createQuery("FROM usuario").getResultList();
+            listOfUser = session.createQuery("FROM Usuario").getResultList();
             
             transaction.commit();
         } catch (Exception e) {

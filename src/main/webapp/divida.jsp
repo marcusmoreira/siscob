@@ -2,9 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+<%--
 <c:if test="${empty sessionScope['loginUser']}">
     <c:redirect url="login.jsp" />
 </c:if>
+--%>
 
 <html>
 <head>
@@ -16,18 +18,18 @@
         <h2>
          <a href="${pageContext.request.contextPath}/index.jsp">Home</a>
          &nbsp;&nbsp;&nbsp;
-         <a href="new">Adicionar dívida</a>
+         <a href="novaDivida">Adicionar dívida</a>
          &nbsp;&nbsp;&nbsp;
-         <a href="list">Listar todas</a>
+         <a href="listaDivida">Listar todas</a>
          
         </h2>
  </center>
     <div align="center">
   <c:if test="${debt != null}">
-   <form action="update" method="post">
+   <form action="atualizaDivida" method="post">
         </c:if>
         <c:if test="$debt == null}">
-   <form action="insert" method="post">
+   <form action="insereDivida" method="post">
         </c:if>
         <table border="1" cellpadding="5">
             <caption>

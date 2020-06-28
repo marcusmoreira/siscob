@@ -38,6 +38,7 @@ public class HibernateUtil {
     //settings.put(Environment.HBM2DDL_AUTO, "validate");
 
     configuration.setProperties(settings);
+    
     configuration.addAnnotatedClass(Usuario.class);
     configuration.addAnnotatedClass(Pessoa.class);
     configuration.addAnnotatedClass(Divida.class);
