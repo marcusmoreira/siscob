@@ -2,11 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<%--
 <c:if test="${empty sessionScope['loginUser']}">
     <c:redirect url="login.jsp" />
 </c:if>
---%>
 
 <html>
 <head>
@@ -28,7 +26,7 @@
   <c:if test="${debt != null}">
    <form action="atualizaDivida" method="post">
         </c:if>
-        <c:if test="$debt == null}">
+        <c:if test="${debt == null}">
    <form action="insereDivida" method="post">
         </c:if>
         <table border="1" cellpadding="5">
@@ -48,7 +46,7 @@
             <tr>
                 <th>Credor: </th>
                 <td>
-                 <input type="text" name="idCredor" size="45"
+                 <input type="number" name="idCredor" size="45" min="1"
                    value="<c:out value='${debt.idCredor}' />"
                   />
                 </td>
@@ -56,7 +54,7 @@
             <tr>
                 <th>Data: </th>
                 <td>
-                 <input type="text" name="dataAtualizacao" size="45"
+                 <input type="text" name="dataAtualizacao" size="10"
                    value="<c:out value='${debt.dataAtualizacao}' />"
                  />
                 </td>
@@ -64,7 +62,7 @@
             <tr>
                 <th>Valor </th>
                 <td>
-                 <input type="text" name="valorDivida" size="15"
+                    <input type="number" name="valorDivida" size="15" min="0.01" step="0.01"
                    value="<c:out value='${debt.valorDivida}' />"
                  />
                 </td>
@@ -72,7 +70,7 @@
             <tr>
                 <th>Devedor: </th>
                 <td>
-                 <input type="text" name="idDevedor" size="15"
+                 <input type="number" name="idDevedor" size="15" min="1"
                    value="<c:out value='${debt.idDevedor}' />"
                  />
                 </td>

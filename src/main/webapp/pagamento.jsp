@@ -2,11 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<%--
 <c:if test="${empty sessionScope['loginUser']}">
     <c:redirect url="login.jsp" />
 </c:if>
---%>
 
 <html>
 <head>
@@ -28,7 +26,7 @@
   <c:if test="${payment != null}">
    <form action="atualizaPagamento" method="post">
         </c:if>
-        <c:if test="payment == null}">
+        <c:if test="${payment == null}">
    <form action="inserePagamento" method="post">
         </c:if>
         <table border="1" cellpadding="5">
@@ -48,23 +46,23 @@
             <tr>
                 <th>Divida </th>
                 <td>
-                 <input type="text" name="idDivida" size="45"
-                   value="<c:out value='${payment.idDivida}' />"
+                 <input type="number" name="idDividaPagamento" size="45" min="1"
+                   value="<c:out value='${payment.idDividaPagamento}' />"
                   />
                 </td>
             </tr>
             <tr>
-                <th>Data: </th>
+                <th>Data </th>
                 <td>
-                 <input type="text" name="dataAtualizacao" size="45"
-                   value="<c:out value='${payment.dataAtualizacao}' />"
+                 <input type="text" name="dataPagamento" size="10"
+                   value="<c:out value='${payment.dataPagamento}' />"
                  />
                 </td>
             </tr>
             <tr>
                 <th>Valor </th>
                 <td>
-                 <input type="text" name="valorpago" size="15"
+                    <input type="number" name="valorPago" size="15" min="0.01" step="0.01"
                    value="<c:out value='${payment.valorPago}' />"
                  />
                 </td>

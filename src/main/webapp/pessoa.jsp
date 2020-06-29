@@ -2,11 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<%--
 <c:if test="${empty sessionScope['loginUser']}">
     <c:redirect url="login.jsp" />
 </c:if>
---%>
 
 <html>
 <head>
@@ -18,7 +16,7 @@
         <h2>
          <a href="${pageContext.request.contextPath}/index.jsp">Home</a>
          &nbsp;&nbsp;&nbsp;
-         <a href="novoPessoa">Adicionar pessoa</a>
+         <a href="novaPessoa">Adicionar pessoa</a>
          &nbsp;&nbsp;&nbsp;
          <a href="listaPessoa">Listar todos</a>
          
@@ -64,7 +62,7 @@
             <tr>
                 <th>UF: </th>
                 <td>
-                 <input type="text" name="uf" size="15"
+                 <input type="text" name="uf" size="2"
                    value="<c:out value='${people.uf}' />"
                  />
                 </td>
@@ -72,7 +70,7 @@
             <tr>
                 <th>Telefone </th>
                 <td>
-                 <input type="text" name="telefone" size="15"
+                 <input type="text" name="telefone" size="10"
                    value="<c:out value='${people.telefone}' />"
                  />
                 </td>
@@ -88,7 +86,7 @@
             <tr>
                 <th>E-mail </th>
                 <td>
-                 <input type="text" name="email" size="15"
+                 <input type="email" name="email" size="50"
                    value="<c:out value='${people.email}' />"
                  />
                 </td>

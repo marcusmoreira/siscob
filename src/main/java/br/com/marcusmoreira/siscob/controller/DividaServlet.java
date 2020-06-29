@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.marcusmoreira.siscob.dao.DividaDao;
 import br.com.marcusmoreira.siscob.model.Divida;
-import java.sql.Date;
 
 @WebServlet(name="Divida",
             //loadOnStartup = 1,
@@ -93,13 +92,13 @@ public class DividaServlet extends HttpServlet {
 
     private void insertDebt(HttpServletRequest request, HttpServletResponse response)
     throws SQLException, IOException {
-        int idDivida = Integer.parseInt(request.getParameter("idDivida"));
+        //int idDivida = Integer.parseInt(request.getParameter("idDivida"));
         int idCredor = Integer.parseInt(request.getParameter("idCredor"));
-        Date dataAtualizacao = Date.valueOf(request.getParameter("dataAtualicao"));
+        String dataAtualizacao = request.getParameter("dataAtualizacao");
         float valorDivida = Float.parseFloat(request.getParameter("valorDivida"));
         int idDevedor = Integer.parseInt(request.getParameter("idDevedor"));
                 
-        Divida novaDivida = new Divida(idDivida, idCredor, dataAtualizacao, valorDivida, idDevedor);
+        Divida novaDivida = new Divida(idCredor, dataAtualizacao, valorDivida, idDevedor);
         dividaDao.saveDebt(novaDivida);
         response.sendRedirect("listaDivida");
     }
@@ -108,7 +107,7 @@ public class DividaServlet extends HttpServlet {
     throws SQLException, IOException {
         int idDivida = Integer.parseInt(request.getParameter("idDivida"));
         int idCredor = Integer.parseInt(request.getParameter("idCredor"));
-        Date dataAtualizacao = Date.valueOf(request.getParameter("dataAtualicao"));
+        String dataAtualizacao = request.getParameter("dataAtualizacao");
         float valorDivida = Float.parseFloat(request.getParameter("valorDivida"));
         int idDevedor = Integer.parseInt(request.getParameter("idDevedor"));
 
@@ -119,8 +118,8 @@ public class DividaServlet extends HttpServlet {
 
     private void deleteDebt(HttpServletRequest request, HttpServletResponse response)
     throws SQLException, IOException {
-        int id_divida = Integer.parseInt(request.getParameter("id_divida"));
-        dividaDao.deleteDebt(id_divida);
+        int idDivida = Integer.parseInt(request.getParameter("idDivida"));
+        dividaDao.deleteDebt(idDivida);
         response.sendRedirect("listaDivida");
     }
 }

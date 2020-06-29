@@ -1,6 +1,5 @@
 package br.com.marcusmoreira.siscob.model;
 
-import java.util.Date;
 import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
@@ -10,8 +9,8 @@ import javax.persistence.metamodel.StaticMetamodel;
 public abstract class Pagamento_ {
 
 	public static volatile SingularAttribute<Pagamento, Integer> idPagamento;
-	public static volatile SingularAttribute<Pagamento, Integer> idDivida;
-	public static volatile SingularAttribute<Pagamento, Date> dataPagamento;
+	public static volatile SingularAttribute<Pagamento, String> dataPagamento;
+	public static volatile SingularAttribute<Pagamento, Integer> idDividaPagamento;
 	public static volatile SingularAttribute<Pagamento, Float> valorPago;
 
 }

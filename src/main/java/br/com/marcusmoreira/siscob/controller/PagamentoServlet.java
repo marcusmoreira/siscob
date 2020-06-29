@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.marcusmoreira.siscob.dao.PagamentoDao;
 import br.com.marcusmoreira.siscob.model.Pagamento;
-import java.sql.Date;
 
 @WebServlet(name="Pagamento",
             //loadOnStartup = 1,
@@ -43,7 +42,7 @@ public class PagamentoServlet extends HttpServlet {
 
         try {
             switch (action) {
-                case "/novaPagamento":
+                case "/novoPagamento":
                     showNewForm(request, response);
                     break;
                 case "/inserePagamento":
@@ -93,12 +92,12 @@ public class PagamentoServlet extends HttpServlet {
 
     private void insertPayment(HttpServletRequest request, HttpServletResponse response)
     throws SQLException, IOException {
-        int idPagamento = Integer.parseInt(request.getParameter("idPagamento"));
-        int idDivida = Integer.parseInt(request.getParameter("idDivida"));
-        Date dataAtualizacao = Date.valueOf(request.getParameter("dataAtualizacao"));
+        //int idPagamento = Integer.parseInt(request.getParameter("idPagamento"));
+        int idDividaPagamento = Integer.parseInt(request.getParameter("idDividaPagamento"));
+        String dataPagamento = request.getParameter("dataPagamento");
         float valorPago = Float.parseFloat(request.getParameter("valorPago"));
 
-        Pagamento novoPagamento = new Pagamento(idPagamento, idDivida, dataAtualizacao, valorPago);
+        Pagamento novoPagamento = new Pagamento(idDividaPagamento, dataPagamento, valorPago);
         pagamentoDao.savePayment(novoPagamento);
         response.sendRedirect("listaPagamento");
     }
@@ -106,11 +105,11 @@ public class PagamentoServlet extends HttpServlet {
     private void updatePayment(HttpServletRequest request, HttpServletResponse response)
     throws SQLException, IOException {
         int idPagamento = Integer.parseInt(request.getParameter("idPagamento"));
-        int idDivida = Integer.parseInt(request.getParameter("idDivida"));
-        Date dataAtualizacao = Date.valueOf(request.getParameter("dataAtualizacao"));
+        int idDividaPagamento = Integer.parseInt(request.getParameter("idDividaPagamento"));
+        String dataPagamento = request.getParameter("dataPagamento");
         float valorPago = Float.parseFloat(request.getParameter("valorPago"));
 
-        Pagamento novoPagamento = new Pagamento(idPagamento, idDivida, dataAtualizacao, valorPago);
+        Pagamento novoPagamento = new Pagamento(idPagamento, idDividaPagamento, dataPagamento, valorPago);
         pagamentoDao.updatePayment(novoPagamento);
         response.sendRedirect("listaPagamento");
     }

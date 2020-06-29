@@ -1,22 +1,23 @@
 package br.com.marcusmoreira.siscob.model;
 
-import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Table;
 import javax.persistence.Id;
 
 @Entity
 @Table(name="divida")
-public class Divida implements Serializable {
+public class Divida {
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="id_divida")
     private int idDivida;
     @Column(name="id_credor")
     private int idCredor;
     @Column(name="data_atualizacao")
-    private Date dataAtualizacao;
+    private String dataAtualizacao;
     @Column(name="valor_divida")
     private float valorDivida;
     @Column(name="id_devedor")
@@ -26,7 +27,7 @@ public class Divida implements Serializable {
         
     }
     
-    public Divida(int idCredor, Date dataAtualizacao, float valorDivida, int idDevedor){
+    public Divida(int idCredor, String dataAtualizacao, float valorDivida, int idDevedor){
         super();
         this.idCredor = idCredor;
         this.dataAtualizacao = dataAtualizacao;
@@ -34,7 +35,7 @@ public class Divida implements Serializable {
         this.idDevedor = idDevedor;
     }
     
-    public Divida(int idDivida, int idCredor, Date dataAtualizacao, float valorDivida, int idDevedor){
+    public Divida(int idDivida, int idCredor, String dataAtualizacao, float valorDivida, int idDevedor){
         super();
         this.idDivida = idDivida;
         this.idCredor = idCredor;
@@ -59,11 +60,11 @@ public class Divida implements Serializable {
         this.idCredor = idCredor;
     }
 
-    public Date getDataAtualizacao() {
+    public String getDataAtualizacao() {
         return dataAtualizacao;
     }
 
-    public void setDataAtualizacao(Date dataAtualizacao) {
+    public void setDataAtualizacao(String dataAtualizacao) {
         this.dataAtualizacao = dataAtualizacao;
     }
 

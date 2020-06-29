@@ -2,11 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<%--
 <c:if test="${empty sessionScope['loginUser']}">
     <c:redirect url="login.jsp" />
 </c:if>
---%>
 
 <html>
 <head>
@@ -72,7 +70,7 @@
             <tr>
                 <th>Senha: </th>
                 <td>
-                 <input type="text" name="senha" size="15"
+                 <input type="password" name="senha" size="15"
                    value="<c:out value='${user.senha}' />"
                  />
                 </td>
@@ -80,7 +78,7 @@
             <tr>
                 <th>E-mail: </th>
                 <td>
-                 <input type="text" name="email" size="15"
+                 <input type="email" name="email" size="15"
                    value="<c:out value='${user.email}' />"
                  />
                 </td>

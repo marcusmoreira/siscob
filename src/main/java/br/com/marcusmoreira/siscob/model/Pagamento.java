@@ -1,8 +1,9 @@
 package br.com.marcusmoreira.siscob.model;
 
-import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -10,12 +11,13 @@ import javax.persistence.Table;
 @Table(name="pagamento")
 public class Pagamento {
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="id_pagamento")
     private int idPagamento;
     @Column(name="id_divida")
-    private int idDivida;
+    private int idDividaPagamento;
     @Column(name="data_pagamento")
-    private Date dataPagamento;
+    private String dataPagamento;
     @Column(name="valor_pago")
     private float valorPago;
 
@@ -23,17 +25,17 @@ public class Pagamento {
         
     }
     
-    public Pagamento(int idDivida, Date dataPagamento, float valorPago){
+    public Pagamento(int idDividaPagamento, String dataPagamento, float valorPago){
         super();
-        this.idDivida = idDivida;
+        this.idDividaPagamento = idDividaPagamento;
         this.dataPagamento = dataPagamento;
         this.valorPago = valorPago;
     }    
     
-    public Pagamento(int idPagamento, int idDivida, Date dataPagamento, float valorPago){
+    public Pagamento(int idPagamento, int idDividaPagamento, String dataPagamento, float valorPago){
         super();
         this.idPagamento = idPagamento;
-        this.idDivida = idDivida;
+        this.idDividaPagamento = idDividaPagamento;
         this.dataPagamento = dataPagamento;
         this.valorPago = valorPago;
     }
@@ -48,22 +50,22 @@ public class Pagamento {
     }
 
 
-    public int getIdDivida() {
-        return idDivida;
+    public int getIdDividaPagamento() {
+        return idDividaPagamento;
     }
 
 
-    public void setIdDivida(int idDivida) {
-        this.idDivida = idDivida;
+    public void setIdDividaPagamento(int idDividaPagamento) {
+        this.idDividaPagamento = idDividaPagamento;
     }
 
 
-    public Date getDataPagamento() {
+    public String getDataPagamento() {
         return dataPagamento;
     }
 
 
-    public void setDataPagamento(Date dataPagamento) {
+    public void setDataPagamento(String dataPagamento) {
         this.dataPagamento = dataPagamento;
     }
 

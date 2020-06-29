@@ -2,11 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<%--
 <c:if test="${empty sessionScope['loginUser']}">
     <c:redirect url="login.jsp" />
 </c:if>
---%>
 
 <html>
 <head>
@@ -33,14 +31,14 @@
             </tr>
             <c:forEach var="payment" items="${listPayment}">
                 <tr>
-                    <td><c:out value="${debt.idPagamento}" /></td>
-                    <td><c:out value="${debt.idDivida}" /></td>
-                    <td><c:out value="${debt.dataAtualizacao}" /></td>
-                    <td><c:out value="${debt.valorPago}" /></td>
+                    <td><c:out value="${payment.idPagamento}" /></td>
+                    <td><c:out value="${payment.idDividaPagamento}" /></td>
+                    <td><c:out value="${payment.dataPagamento}" /></td>
+                    <td><c:out value="${payment.valorPago}" /></td>
                     <td>
-                     <a href="editaPagamento?idPaymento=<c:out value='${payment.idPagamento}' />">Editar</a>
+                     <a href="editaPagamento?idPagamento=<c:out value='${payment.idPagamento}' />">Editar</a>
                      &nbsp;&nbsp;&nbsp;&nbsp;
-                     <a href="removePagamento?idPayment=<c:out value='${payment.idPagamento}' />">Remover</a>                     
+                     <a href="removePagamento?idPagamento=<c:out value='${payment.idPagamento}' />">Remover</a>
                     </td>
                 </tr>
             </c:forEach>
